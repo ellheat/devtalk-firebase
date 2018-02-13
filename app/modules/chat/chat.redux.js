@@ -1,20 +1,20 @@
 import { createActions, createReducer } from 'reduxsauce';
 import { Record, List, fromJS } from 'immutable';
 
-export const { Types: MaintainersTypes, Creators: MaintainersActions } = createActions({
+export const { Types: ChatTypes, Creators: ChatActions } = createActions({
   fetch: ['language'],
   fetchSuccess: ['data'],
   fetchError: ['payload'],
-}, { prefix: 'MAINTAINERS_' });
+}, { prefix: 'CHAT_' });
 
-const MaintainersRecord = new Record({
+const ChatRecord = new Record({
   items: List(),
 });
 
-export const INITIAL_STATE = new MaintainersRecord({});
+export const INITIAL_STATE = new ChatRecord({});
 
 const getSuccessHandler = (state = INITIAL_STATE, action) => state.set('items', fromJS(action.data));
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [MaintainersTypes.FETCH_SUCCESS]: getSuccessHandler,
+  [ChatTypes.FETCH_SUCCESS]: getSuccessHandler,
 });

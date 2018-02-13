@@ -3,7 +3,7 @@ import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import { DEFAULT_LOCALE } from '../modules/locales/locales.redux';
 
 import App from './app.container';
-import Contact from './contact';
+import Chat from './chat';
 import Home from './home';
 import NotFound from './notFound';
 
@@ -21,7 +21,7 @@ export class RootContainer extends PureComponent {
             <Switch>
               <Route exact path="/:lang" component={Home} />
 
-              <Route exact path="/:lang/contact" component={Contact} />
+              <Route exact path="/:lang/chat/:id" component={Chat} />
 
               <Route component={NotFound} />
             </Switch>

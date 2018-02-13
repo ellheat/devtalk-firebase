@@ -5,9 +5,7 @@ import Helmet from 'react-helmet';
 
 export class Home extends PureComponent {
   static propTypes = {
-    items: PropTypes.object,
     language: PropTypes.string.isRequired,
-    fetchMaintainers: PropTypes.func.isRequired,
     setLanguage: PropTypes.func.isRequired,
     match: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
@@ -20,13 +18,7 @@ export class Home extends PureComponent {
   };
 
   componentWillMount() {
-    this.props.fetchMaintainers(this.props.language);
-  }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.language !== this.props.language) {
-      this.props.fetchMaintainers(nextProps.language);
-    }
   }
 
   render() {

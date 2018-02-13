@@ -1,10 +1,10 @@
 import { all, fork } from 'redux-saga/effects';
-import maintainersSaga from './maintainers/maintainers.sagas';
+import chatSaga from './chat/chat.sagas';
 import authenticationSaga from './authentication/authentication.sagas';
 
 export default function* rootSaga() {
   yield all([
-    fork(maintainersSaga),
+    fork(chatSaga),
     fork(authenticationSaga),
   ]);
 }
