@@ -20,6 +20,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import FontFaceObserver from 'fontfaceobserver';
 import 'normalize.css/normalize.css';
 import './main.scss';
+import './services/firebase';
 import configureStore from './modules/store';
 
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
