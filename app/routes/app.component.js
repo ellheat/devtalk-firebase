@@ -45,7 +45,6 @@ export class App extends PureComponent {
             { name: 'description', content: 'Apptension React Boilerplate application' },
           ]}
         />
-
         <IntlProvider
           locale={this.props.language}
           messages={translationMessages[this.props.language]}
