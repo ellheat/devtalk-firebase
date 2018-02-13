@@ -14,20 +14,30 @@ export class Home extends PureComponent {
     }).isRequired,
     isUserLogged: PropTypes.bool.isRequired,
     signIn: PropTypes.func.isRequired,
+    logout: PropTypes.func.isRequired,
     userProfile: PropTypes.object.isRequired,
   };
 
   componentWillMount() {
 
   }
+  renderLoggedOut = () => (
+    <button onClick={this.props.signIn}>Zaloguj się</button>
+  );
+
+  renderLoggedIn = () => (
+    <div>
+      Witaj {this.props.userProfile.get('name')} <br />
+      <button onClick={this.props.logout}>wyloguj</button>
+    </div>
+  );
 
   render() {
     return (
       <div className="home">
         <Helmet title="Homepage" />
 
-        { !this.props.isUserLogged && <button onClick={this.props.signIn}>Zaloguj się</button>}
-        { this.props.isUserLogged && <span>Witaj {this.props.userProfile.get('displayName')}</span>}
+        { this.props.isUserLogged ? this.renderLoggedIn() : this.renderLoggedOut() }
 
       </div>
     );

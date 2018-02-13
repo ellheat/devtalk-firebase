@@ -5,7 +5,9 @@ export const { Types: AuthenticationTypes, Creators: AuthenticationActions } = c
   signIn: null,
   signInSuccess: ['data'],
   signInError: ['payload'],
-}, { prefix: 'MAINTAINERS_' });
+  logout: null,
+  logoutSuccess: null,
+}, { prefix: 'AUTH_' });
 
 const AuthenticationRecord = new Record({
   user: Map(),
@@ -13,8 +15,11 @@ const AuthenticationRecord = new Record({
 
 export const INITIAL_STATE = new AuthenticationRecord({});
 
-const getSuccessHandler = (state = INITIAL_STATE, action) => state.set('user', fromJS(action.data));
+const setUserProfile = (state = INITIAL_STATE, action) => state.set('user', fromJS(action.data));
+
+const resetProfile = (state) => state.set('user', Map());
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [AuthenticationTypes.SIGN_IN_SUCCESS]: getSuccessHandler,
+  [AuthenticationTypes.SIGN_IN_SUCCESS]: setUserProfile,
+  [AuthenticationTypes.LOGOUT_SUCCESS]: resetProfile,
 });

@@ -17,6 +17,7 @@ const mapStateToProps = createStructuredSelector({
 export const mapDispatchToProps = (dispatch) => bindActionCreators({
   setLanguage: LocalesActions.setLanguage,
   signIn: AuthenticationActions.signIn,
+  logout: AuthenticationActions.logout,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
