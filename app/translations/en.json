@@ -1,5 +1,6 @@
 {
-  "home.maintainerList.title": "Maintainers",
-  "home.welcome": "Welcome to Apptension React Boilerplate!",
-  "contact.title": "Contact page"
+  "contact.title": "Contact page",
+  "home.welcome": "Welcome to Chaturbator!",
+  "messageInput.placeholder": "Write a message...",
+  "messageInput.send": "Send"
 }
