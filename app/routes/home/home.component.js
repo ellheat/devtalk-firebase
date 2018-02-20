@@ -25,12 +25,18 @@ export class Home extends PureComponent {
     <button onClick={this.props.signIn}>Zaloguj się</button>
   );
 
-  renderLoggedIn = () => (
-    <div>
-      Witaj {this.props.userProfile.get('name')} <br />
-      <button onClick={this.props.logout}>wyloguj</button>
-    </div>
-  );
+  renderLoggedIn = () => {
+    const { userProfile } = this.props;
+    return (
+      <div>
+        Witaj {userProfile.get('displayName')} <br />
+        email: {userProfile.get('email')}<br />
+        avatar: <img src={userProfile.get('photoURL')} alt={userProfile.get('displayName')} /><br />
+        <br />
+        <button onClick={this.props.logout}>wyloguj</button>
+      </div>
+    );
+  };
 
   render() {
     return (
