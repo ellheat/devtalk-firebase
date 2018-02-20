@@ -1,13 +1,12 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import reportError from 'report-error';
 
-import api from '../../services/api';
 import { auth, googleProvider } from '../../services/firebase';
 import { AuthenticationTypes, AuthenticationActions } from './authentication.redux';
 
+
 export function* signIn() {
   try {
-
     const data = yield auth.signInWithPopup(googleProvider);
 
     yield put(AuthenticationActions.signInSuccess(data.additionalUserInfo.profile));

@@ -2,8 +2,7 @@ import React, { PureComponent } from 'react';
 
 
 export class Chat extends PureComponent {
-  static propTypes = {
-  };
+  static propTypes = {};
 
   state = {
     messageList: [],
@@ -15,7 +14,7 @@ export class Chat extends PureComponent {
 
   render = () => (
     <div className="chat">
-      />
+
     </div>
   );
 }

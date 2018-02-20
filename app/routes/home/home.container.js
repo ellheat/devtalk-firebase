@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { createStructuredSelector } from 'reselect';
+import { hot } from 'react-hot-loader';
+import { withRouter } from 'react-router-dom';
 
 import { Home } from './home.component';
 import { LocalesActions } from '../../modules/locales/locales.redux';
@@ -20,4 +22,4 @@ export const mapDispatchToProps = (dispatch) => bindActionCreators({
   logout: AuthenticationActions.logout,
 }, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default hot(module)(withRouter(connect(mapStateToProps, mapDispatchToProps)(Home)));
