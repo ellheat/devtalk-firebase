@@ -2,7 +2,8 @@ import { createActions, createReducer } from 'reduxsauce';
 import { Record } from 'immutable';
 
 export const { Types: NotificationsTypes, Creators: NotificationsActions } = createActions({
-  noop: null, // TODO: remove this action
+  requestPermission: [],
+  requestPermissionFailed: ['error'],
 }, { prefix: 'NOTIFICATIONS_' });
 
 const NotificationsRecord = new Record({

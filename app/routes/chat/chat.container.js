@@ -7,6 +7,7 @@ import { withRouter } from 'react-router-dom';
 import { Chat } from './chat.component';
 import { ChatActions } from '../../modules/chat/chat.redux';
 import { selectUserProfile } from '../../modules/authentication/authentication.selectors';
+import { NotificationsActions } from '../../modules/notifications/notifications.redux';
 
 const mapStateToProps = createStructuredSelector({
   userProfile: selectUserProfile,
@@ -14,6 +15,7 @@ const mapStateToProps = createStructuredSelector({
 
 export const mapDispatchToProps = (dispatch) => bindActionCreators({
   sendChatMessage: ChatActions.sendChatMessage,
+  requestNotificationsPermission: NotificationsActions.requestPermission,
 }, dispatch);
 
 export default hot(module)(withRouter(connect(mapStateToProps, mapDispatchToProps)(Chat)));
