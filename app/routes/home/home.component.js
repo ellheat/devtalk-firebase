@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-
+import { Link } from 'react-router-dom';
 
 export class Home extends PureComponent {
   static propTypes = {
@@ -32,6 +32,11 @@ export class Home extends PureComponent {
         Witaj {userProfile.get('displayName')} <br />
         email: {userProfile.get('email')}<br />
         avatar: <img src={userProfile.get('photoURL')} alt={userProfile.get('displayName')} /><br />
+        <br />
+        <br />
+
+        <Link to="/en/chat/1"><button>Chat 1</button></Link> <br />
+        <Link to="/en/chat/2"><button>Chat 2</button></Link> <br />
         <br />
         <button onClick={this.props.logout}>wyloguj</button>
       </div>
