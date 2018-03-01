@@ -13,6 +13,6 @@ firebase.initializeApp(config);
 
 export const googleProvider = new firebase.auth.GoogleAuthProvider();
 export const auth = firebase.auth();
-export default firebase;
-
 export const messagesRef = firebase.database().ref('messages');
+export const timestamp = firebase.database.ServerValue.TIMESTAMP;
+export default firebase;
