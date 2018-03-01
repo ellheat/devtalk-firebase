@@ -50,4 +50,4 @@ export const mapDispatchToProps = (dispatch) => bindActionCreators({
 }, dispatch);
 
 
-export default connect(null, mapDispatchToProps)(withRouter(RootContainer));
+export default withRouter(connect(null, mapDispatchToProps)(RootContainer));
