@@ -15,7 +15,7 @@ export const Text = styled.input`
   border: 0;
 `;
 
-export const SendButton = styled.div`
+export const SendButton = styled.button`
   width: 120px;
   background-color: ${primaryBackgroundColor};
   display: flex;

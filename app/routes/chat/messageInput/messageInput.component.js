@@ -8,6 +8,9 @@ import { Form, Text, SendButton } from './messageInput.styles';
 
 class MessageInputComponent extends PureComponent {
   static propTypes = {
+    send: PropTypes.func.isRequired,
+    match: PropTypes.object.isRequired,
+    author: PropTypes.string,
     intl: PropTypes.object.isRequired,
   };
 
@@ -25,7 +28,7 @@ class MessageInputComponent extends PureComponent {
 
   submitHandler = (e) => {
     e.preventDefault();
-
+    this.props.send(this.props.match.params.id, this.props.author, this.state.input);
     // here will be action to send message
 
     this.clearInput();

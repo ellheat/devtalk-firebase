@@ -2,16 +2,16 @@ import { put, takeLatest } from 'redux-saga/effects';
 import reportError from 'report-error';
 
 import { ChatTypes, ChatActions } from './chat.redux';
+import { messagesRef } from '../../services/firebase';
 
-export function* fetchChat() {
+export function* sendChatMessage({ roomId, author, message }) {
   try {
-    yield put(ChatActions.fetchSuccess(data));
+    yield messagesRef.child(roomId).push({ author, message });
   } catch (e) {
-    yield put(ChatActions.fetchError(e.response ? e.response.data : e));
     yield reportError(e);
   }
 }
 
-export default function* maintainersSaga() {
-  yield takeLatest(ChatTypes.FETCH, fetchChat);
+export default function* chatSaga() {
+  yield takeLatest(ChatTypes.SEND_CHAT_MESSAGE, sendChatMessage);
 }
