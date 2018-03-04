@@ -5,7 +5,7 @@ import validate from 'validate.js/validate';
 import { Field, reduxForm } from 'redux-form/immutable';
 
 import messages from './messageForm.messages';
-import { Input, SendButton } from './messageForm.styles';
+import { Input, SendButton, Form } from './messageForm.styles';
 
 
 class MessageFormComponent extends PureComponent {
@@ -29,7 +29,7 @@ class MessageFormComponent extends PureComponent {
     const { intl: { formatMessage }, handleSubmit } = this.props;
 
     return (
-      <form onSubmit={handleSubmit} noValidate>
+      <Form onSubmit={handleSubmit} noValidate>
         <Field
           name="message"
           type="text"
@@ -39,7 +39,7 @@ class MessageFormComponent extends PureComponent {
         <SendButton>
           <FormattedMessage {...messages.send} />
         </SendButton>
-      </form>
+      </Form>
     );
   }
 }
