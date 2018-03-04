@@ -4,6 +4,7 @@ import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import '../theme/global';
 import { DEFAULT_LOCALE } from '../modules/locales/locales.redux';
 import { StartupActions } from '../modules/startup/startup.redux';
 
