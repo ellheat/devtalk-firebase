@@ -7,7 +7,7 @@ export class Message extends PureComponent {
   static propTypes = {
     author: PropTypes.string.isRequired,
     avatar: PropTypes.string.isRequired,
-    timestamp: PropTypes.instanceOf(Date).isRequired,
+    timestamp: PropTypes.number.isRequired,
     message: PropTypes.string.isRequired,
   };
 
@@ -16,9 +16,9 @@ export class Message extends PureComponent {
     avatar: 'https://avatars.io/static/default_128.jpg',
   };
 
-  renderDate = (d) => {
+  renderDate = (timestamp) => {
     // format H:i d.m.Y
-    console.log(d);
+    const d = new Date(timestamp * 1000);
     return `${d.getHours()}:${d.getMinutes()} ${d.getDate()}.${d.getMonth() + 1}.${d.getFullYear()}`;
   };
 

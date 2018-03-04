@@ -1,20 +1,25 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { List } from 'immutable';
 
 import { Message } from './message/message.component';
 import { Wrapper } from './messages.styles';
-
-const timestamp = new Date();
-
 export class Messages extends PureComponent {
-  static propTypes = {};
+  static propTypes = {
+    messages: PropTypes.instanceOf(List).isRequired,
+  };
 
+  renderMessage = (message) => (
+    <Message
+      key={message.get('key')}
+      author={message.get('author')}
+      message={message.get('message')}
+      timestamp={message.get('timestamp')}
+    />
+  );
   render = () => (
     <Wrapper>
-      <Message author="Marcin Bazanowski" timestamp={timestamp} message="Test message" />
-      <Message author="Marcin Bazanowski" timestamp={timestamp} message="Testy message other" />
-      <Message author="Rafał Gruszecki" timestamp={timestamp} message="Test message" />
-      <Message author="Rafał Gruszecki" timestamp={timestamp} message="Test message" />
+      {this.props.messages.map(this.renderMessage).toArray()}
     </Wrapper>
   );
 }

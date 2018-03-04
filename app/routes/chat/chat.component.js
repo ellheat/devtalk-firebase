@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { List } from 'immutable';
 
 import { Wrapper } from './chat.styles';
 import { Messages } from './messages/messages.component';
@@ -9,14 +10,22 @@ import { MessageForm } from './messageForm/messageForm.component';
 export class Chat extends PureComponent {
   static propTypes = {
     match: PropTypes.object.isRequired,
+    messages: PropTypes.instanceOf(List).isRequired,
     userProfile: PropTypes.object,
     sendChatMessage: PropTypes.func.isRequired,
     requestNotificationsPermission: PropTypes.func.isRequired,
+    watchChat: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
-    console.log('chat');
     this.props.requestNotificationsPermission();
+    this.props.watchChat(
+      this.props.match.params.id,
+    );
+  }
+
+  componentWillUnmount() {
+    // this.props.stopWatchChat();
   }
 
   submitHandler = (data) => {
@@ -28,7 +37,7 @@ export class Chat extends PureComponent {
 
   render = () => (
     <Wrapper>
-      <Messages />
+      <Messages messages={this.props.messages} />
       <MessageForm onSubmit={this.submitHandler} />
     </Wrapper>
   );
