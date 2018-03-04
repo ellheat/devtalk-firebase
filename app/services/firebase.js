@@ -14,6 +14,7 @@ export const googleProvider = new firebase.auth.GoogleAuthProvider();
 export const auth = firebase.auth();
 
 export const messagesRef = firebase.database().ref('messages');
+export const roomsRef = firebase.database().ref('rooms');
 export const timestamp = firebase.database.ServerValue.TIMESTAMP;
 
 export const messaging = firebase.messaging();

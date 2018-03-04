@@ -1,5 +1,6 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import reportError from 'report-error';
+import { reset as resetForm } from 'redux-form/immutable';
 
 import { ChatTypes, ChatActions } from './chat.redux';
 import { messagesRef, timestamp } from '../../services/firebase';
@@ -7,6 +8,7 @@ import { messagesRef, timestamp } from '../../services/firebase';
 export function* sendChatMessage({ roomId, author, message }) {
   try {
     yield messagesRef.child(roomId).push({ author, message, timestamp });
+    yield put(resetForm('messageForm'));
   } catch (e) {
     yield reportError(e);
   }

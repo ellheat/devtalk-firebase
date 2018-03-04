@@ -3,10 +3,13 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router-dom';
 
+import { RoomForm } from './roomForm/roomForm.component';
+
 export class Home extends PureComponent {
   static propTypes = {
     language: PropTypes.string.isRequired,
     setLanguage: PropTypes.func.isRequired,
+    addRoom: PropTypes.func.isRequired,
     match: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
     history: PropTypes.shape({
@@ -18,9 +21,6 @@ export class Home extends PureComponent {
     userProfile: PropTypes.object.isRequired,
   };
 
-  componentWillMount() {
-
-  }
   renderLoggedOut = () => (
     <button onClick={this.props.signIn}>Zaloguj się</button>
   );
@@ -35,8 +35,13 @@ export class Home extends PureComponent {
         <br />
         <br />
 
-        <Link to="/en/chat/1"><button>Chat 1</button></Link> <br />
-        <Link to="/en/chat/2"><button>Chat 2</button></Link> <br />
+        <Link to="/en/chat/1">
+          <button>Chat 1</button>
+        </Link> <br />
+        <Link to="/en/chat/2">
+          <button>Chat 2</button>
+        </Link> <br />
+
         <br />
         <button onClick={this.props.logout}>wyloguj</button>
       </div>
@@ -48,8 +53,8 @@ export class Home extends PureComponent {
       <div className="home">
         <Helmet title="Homepage" />
 
-        { this.props.isUserLogged ? this.renderLoggedIn() : this.renderLoggedOut() }
-
+        {this.props.isUserLogged ? this.renderLoggedIn() : this.renderLoggedOut()}
+        <RoomForm onSubmit={this.props.addRoom} />
       </div>
     );
   }

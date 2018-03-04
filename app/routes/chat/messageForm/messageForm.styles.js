@@ -9,7 +9,7 @@ export const Form = styled.form`
   border-top: 1px solid ${primaryBackgroundColor};
 `;
 
-export const Text = styled.input`
+export const Input = styled.input`
   width: 90%;
   outline: none;
   border: 0;

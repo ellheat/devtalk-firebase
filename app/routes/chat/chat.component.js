@@ -1,8 +1,10 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+
 import { Wrapper } from './chat.styles';
 import { Messages } from './messages/messages.component';
-import { MessageInput } from './messageInput/messageInput.component';
+import { MessageForm } from './messageForm/messageForm.component';
+
 
 export class Chat extends PureComponent {
   static propTypes = {
@@ -17,14 +19,17 @@ export class Chat extends PureComponent {
     this.props.requestNotificationsPermission();
   }
 
+  submitHandler = (data) => {
+    this.props.sendChatMessage(
+      this.props.match.params.id,
+      this.props.userProfile.get('displayName'),
+      data.get('message'));
+  };
+
   render = () => (
     <Wrapper>
       <Messages />
-      <MessageInput
-        send={this.props.sendChatMessage}
-        author={this.props.userProfile.get('displayName')}
-        match={this.props.match}
-      />
+      <MessageForm onSubmit={this.submitHandler} />
     </Wrapper>
   );
 }
