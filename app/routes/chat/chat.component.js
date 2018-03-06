@@ -14,18 +14,19 @@ export class Chat extends PureComponent {
     userProfile: PropTypes.object,
     sendChatMessage: PropTypes.func.isRequired,
     requestNotificationsPermission: PropTypes.func.isRequired,
-    watchChat: PropTypes.func.isRequired,
+    createChatListener: PropTypes.func.isRequired,
+    removeChatListener: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
     this.props.requestNotificationsPermission();
-    this.props.watchChat(
+    this.props.createChatListener(
       this.props.match.params.id,
     );
   }
 
   componentWillUnmount() {
-    // this.props.stopWatchChat();
+    this.props.removeChatListener();
   }
 
   submitHandler = (data) => {

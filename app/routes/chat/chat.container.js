@@ -9,6 +9,7 @@ import { ChatActions } from '../../modules/chat/chat.redux';
 import { selectMessages } from '../../modules/chat/chat.selectors';
 import { selectUserProfile } from '../../modules/authentication/authentication.selectors';
 import { NotificationsActions } from '../../modules/notifications/notifications.redux';
+import { createChatListener } from '../../modules/chat/chat.sagas';
 
 const mapStateToProps = createStructuredSelector({
   userProfile: selectUserProfile,
@@ -18,7 +19,8 @@ const mapStateToProps = createStructuredSelector({
 export const mapDispatchToProps = (dispatch) => bindActionCreators({
   sendChatMessage: ChatActions.sendChatMessage,
   requestNotificationsPermission: NotificationsActions.requestPermission,
-  watchChat: ChatActions.watchChat,
+  createChatListener: ChatActions.createChatListener,
+  removeChatListener: ChatActions.removeChatListener,
 }, dispatch);
 
 export default hot(module)(withRouter(connect(mapStateToProps, mapDispatchToProps)(Chat)));

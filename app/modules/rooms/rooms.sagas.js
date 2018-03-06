@@ -1,4 +1,4 @@
-import { takeLatest, put, call, take } from 'redux-saga/effects';
+import { takeLatest, put, call, take, fork } from 'redux-saga/effects';
 import { buffers, eventChannel } from 'redux-saga';
 import reportError from 'report-error';
 import { reset as resetForm } from 'redux-form/immutable';
@@ -6,7 +6,7 @@ import { reset as resetForm } from 'redux-form/immutable';
 import { RoomsTypes, RoomsActions } from './rooms.redux';
 import { roomsRef } from '../../services/firebase';
 
-export function* addRoom({ data }) {
+function* addRoom({ data }) {
   try {
     yield roomsRef.child(data.get('room')).set(true);
     yield put(resetForm('roomForm'));
@@ -18,7 +18,7 @@ export function* addRoom({ data }) {
 
 
 export function createEventChannel() {
-  const listener = eventChannel(emit => {
+  return eventChannel(emit => {
     roomsRef.on('child_added', snap => {
       emit({
         key: snap.key,
@@ -29,25 +29,24 @@ export function createEventChannel() {
       roomsRef.off();
     };
   }, buffers.expanding(1));
-  return listener;
+}
+
+function* removeRoomsListener(channel) {
+  yield take(RoomsTypes.REMOVE_ROOMS_LISTENER);
+  channel.close();
 }
 
 export function* createRoomsListener() {
-  const channel = yield call(createEventChannel);
   try {
+    const channel = yield call(createEventChannel);
+
+    yield fork(removeRoomsListener, channel);
+
     while (true) {
       const data = yield take(channel);
+
       yield put(RoomsActions.showRooms(data.key));
     }
-  } catch (e) {
-    yield reportError(e);
-  }
-}
-
-export function* removeRoomsListener() {
-  const channel = yield call(createEventChannel);
-  try {
-    channel.close();
   } catch (e) {
     yield reportError(e);
   }
