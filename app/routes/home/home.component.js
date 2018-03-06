@@ -4,7 +4,19 @@ import Helmet from 'react-helmet';
 
 import { RoomForm } from './roomForm/roomForm.component';
 
-import { Link } from './home.styles';
+import {
+  AvatarImage,
+  Link,
+  UserActionButton,
+  UserData,
+  UserName,
+  UserPanel,
+  LogoutButton,
+  UserMenu,
+  MenuItem,
+  Sidebar,
+  RoomButton,
+} from './home.styles';
 
 
 export class Home extends PureComponent {
@@ -26,6 +38,10 @@ export class Home extends PureComponent {
     rooms: PropTypes.object,
   };
 
+  state = {
+    userMenuOpened: false,
+  };
+
   componentDidMount() {
     this.props.createRoomsListener();
   }
@@ -34,13 +50,17 @@ export class Home extends PureComponent {
     this.props.removeRoomsListener();
   }
 
+  toggleUserMenu() {
+    this.setState({ userMenuOpened: !this.state.userMenuOpened });
+  }
+
   renderLoggedOut = () => (
-    <button onClick={this.props.signIn}>Zaloguj się</button>
+    <UserActionButton onClick={this.props.signIn}>Log in</UserActionButton>
   );
 
   renderRooms = () => this.props.rooms.map((data, index) => (
     <Link key={index} to={`/en/chat/${data}`}>
-      <button>Chat {data}</button>
+      <RoomButton>{`${data} chat`}</RoomButton>
     </Link>
   ));
 
@@ -48,15 +68,17 @@ export class Home extends PureComponent {
     const { userProfile } = this.props;
 
     return (
-      <div>
-        Witaj {userProfile.get('displayName')} <br />
-        email: {userProfile.get('email')}<br />
-        avatar: <img src={userProfile.get('photoURL')} alt={userProfile.get('displayName')} /><br />
-        <br />
-        <br />
-        <br />
-        <button onClick={this.props.logout}>wyloguj</button>
-      </div>
+      <UserData>
+        <UserName>{userProfile.get('displayName')}</UserName>
+        <AvatarImage
+          onClick={() => this.toggleUserMenu()}
+          src={userProfile.get('photoURL')} alt={userProfile.get('displayName')} />
+        <UserMenu menuOpened={this.state.userMenuOpened}>
+          <MenuItem>{userProfile.get('email')}</MenuItem>
+          <LogoutButton menuOpened={this.state.userMenuOpened}
+            onClick={this.props.logout}>Log out</LogoutButton>
+        </UserMenu>
+      </UserData>
     );
   };
 
@@ -64,10 +86,12 @@ export class Home extends PureComponent {
     return (
       <div className="home">
         <Helmet title="Homepage" />
-
-        {this.props.isUserLogged ? this.renderLoggedIn() : this.renderLoggedOut()}
-        {this.renderRooms()}
-        <RoomForm onSubmit={this.props.addRoom} />
+        {this.props.isUserLogged ?
+          <UserPanel> { this.renderLoggedIn() }</UserPanel> : this.renderLoggedOut()}
+        <Sidebar>
+          {this.renderRooms()}
+          <RoomForm onSubmit={this.props.addRoom} />
+        </Sidebar>
       </div>
     );
   }

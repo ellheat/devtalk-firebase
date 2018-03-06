@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import { Field, reduxForm } from 'redux-form/immutable';
 import PropTypes from 'prop-types';
 import validate from 'validate.js';
@@ -8,7 +8,7 @@ import messages from './roomForm.messages';
 
 import {
   Input,
-  Button,
+  Form,
 } from './roomForm.styles';
 
 export class RoomFormComponent extends PureComponent {
@@ -32,17 +32,14 @@ export class RoomFormComponent extends PureComponent {
     const { intl: { formatMessage }, handleSubmit } = this.props;
 
     return (
-      <form onSubmit={handleSubmit} noValidate>
+      <Form onSubmit={handleSubmit} noValidate>
         <Field
           name="room"
           type="text"
           component={this.renderField}
           placeholder={formatMessage(messages.name)}
         />
-        <Button>
-          <FormattedMessage {...messages.add} />
-        </Button>
-      </form>
+      </Form>
     );
   }
 }

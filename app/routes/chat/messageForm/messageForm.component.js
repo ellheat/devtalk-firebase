@@ -36,6 +36,7 @@ class MessageFormComponent extends PureComponent {
           component={this.renderField}
           placeholder={formatMessage(messages.placeholder)}
         />
+        sf
         <SendButton>
           <FormattedMessage {...messages.send} />
         </SendButton>
