@@ -2,28 +2,41 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   display: flex;
-  padding: 6px;
-  border-bottom: 1px solid #ddd;
-  background-color: #f6f6f6;
   transition: background-color 0.3s ease;
-  
-  &:nth-child(2n) {
-    background-color: #f0f0f0;
-  }
+  font-family: 'Arial';
+  margin: 20px;
   
   &:hover {
-    background-color: #f1fdd8;
+    background-color: #fff;
+  }
+`;
+
+export const Content = styled.div`
+  background-color: #f6f6f6;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  position: relative;
+  
+  &:before {
+    content: '';
+    position: absolute;
+    width: 0; 
+    height: 0; 
+    border-top: 0 solid transparent;
+    border-bottom: 10px solid transparent; 
+    border-right:10px solid #f6f6f6;
+    top: 0;
+    left: -10px;
   }
 `;
 
 export const Avatar = styled.div`
-  width: 36px;
-  height: 36px;
-  margin-right: 15px;
-  border-radius: 36px;
+  width: 40px;
+  height: 40px;
+  margin-right: 25px;
+  border-radius: 50%;
   overflow: hidden;
-  border: 1px solid rgba(0,0,0,.2);
-  flex: 0 0 32px;
 `;
 
 export const Author = styled.span`
@@ -45,11 +58,7 @@ export const Timestamp = styled.span`
 `;
 
 export const Text = styled.div`
-  font-size: 16px;
+  font-size: 14px;
   flex: 0 1 auto;
-`;
-
-export const Content = styled.div`
-  display: flex;
-  flex-direction: column;
+  margin-top: 10px;
 `;

@@ -30,9 +30,14 @@ export class Chat extends PureComponent {
   }
 
   submitHandler = (data) => {
+    const author = {
+      name: this.props.userProfile.get('displayName'),
+      imageURL: this.props.userProfile.get('photoURL'),
+    };
+
     this.props.sendChatMessage(
       this.props.match.params.id,
-      this.props.userProfile.get('displayName'),
+      author,
       data.get('message'));
   };
 
