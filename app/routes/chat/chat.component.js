@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
 
@@ -7,7 +7,7 @@ import Room from './room';
 import { RoomList } from './roomList/roomList.component';
 
 
-export class Chat extends Component {
+export class Chat extends PureComponent {
   static propTypes = {
     createRoomsListener: PropTypes.func.isRequired,
     removeRoomsListener: PropTypes.func.isRequired,

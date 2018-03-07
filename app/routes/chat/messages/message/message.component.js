@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import { Wrapper, Avatar, Meta, Text, Author, Timestamp, Content } from './message.styles';
 
-export class Message extends Component {
+export class Message extends PureComponent {
   static propTypes = {
     author: PropTypes.string.isRequired,
     avatar: PropTypes.string.isRequired,

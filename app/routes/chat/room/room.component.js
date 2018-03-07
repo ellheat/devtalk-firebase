@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { List } from 'immutable';
 
@@ -7,7 +7,7 @@ import { Messages } from '../messages/messages.component';
 import { MessageForm } from '../messageForm/messageForm.component';
 
 
-export class Room extends Component {
+export class Room extends PureComponent {
   static propTypes = {
     match: PropTypes.object.isRequired,
     messages: PropTypes.instanceOf(List).isRequired,
@@ -36,10 +36,14 @@ export class Room extends Component {
       data.get('message'));
   };
 
-  render = () => (
-    <Wrapper>
-      <Messages messages={this.props.messages} />
-      <MessageForm onSubmit={this.submitHandler} />
-    </Wrapper>
-  );
+  render = () => {
+    return (
+      <Wrapper>
+        <h1>{this.props.match.params.id}</h1>
+        <br />
+        <Messages messages={this.props.messages} />
+        <MessageForm onSubmit={this.submitHandler} />
+      </Wrapper>
+    );
+  };
 }

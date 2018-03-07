@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { RoomForm } from '../roomForm/roomForm.component';
 
 import { Link } from './roomList.styles';
 
-export class RoomList extends Component {
+export class RoomList extends PureComponent {
   static propTypes = {
     rooms: PropTypes.object,
     addRoom: PropTypes.func.isRequired,
