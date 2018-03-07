@@ -1,9 +1,9 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 
 import { Container } from './notFound.styles';
 
-export class NotFound extends PureComponent {
+export class NotFound extends Component {
   render() {
     return (
       <Container>

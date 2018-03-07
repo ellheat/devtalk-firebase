@@ -5,22 +5,17 @@ import { hot } from 'react-hot-loader';
 import { withRouter } from 'react-router-dom';
 
 import { Chat } from './chat.component';
-import { ChatActions } from '../../modules/chat/chat.redux';
-import { selectMessages } from '../../modules/chat/chat.selectors';
-import { selectUserProfile } from '../../modules/authentication/authentication.selectors';
-import { NotificationsActions } from '../../modules/notifications/notifications.redux';
-import { createChatListener } from '../../modules/chat/chat.sagas';
+import { RoomsActions } from '../../modules/rooms/rooms.redux';
+import { selectRooms } from '../../modules/rooms/rooms.selectors';
 
 const mapStateToProps = createStructuredSelector({
-  userProfile: selectUserProfile,
-  messages: selectMessages,
+  rooms: selectRooms,
 });
 
 export const mapDispatchToProps = (dispatch) => bindActionCreators({
-  sendChatMessage: ChatActions.sendChatMessage,
-  requestNotificationsPermission: NotificationsActions.requestPermission,
-  createChatListener: ChatActions.createChatListener,
-  removeChatListener: ChatActions.removeChatListener,
+  addRoom: RoomsActions.addRoom,
+  createRoomsListener: RoomsActions.createRoomsListener,
+  removeRoomsListener: RoomsActions.removeRoomsListener,
 }, dispatch);
 
-export default hot(module)(withRouter(connect(mapStateToProps, mapDispatchToProps)(Chat)));
+export default hot(module)(connect(mapStateToProps, mapDispatchToProps)(withRouter(Chat)));

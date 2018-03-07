@@ -1,10 +1,10 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { List } from 'immutable';
 
 import { Message } from './message/message.component';
 import { Wrapper } from './messages.styles';
-export class Messages extends PureComponent {
+export class Messages extends Component {
   static propTypes = {
     messages: PropTypes.instanceOf(List).isRequired,
   };

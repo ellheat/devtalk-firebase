@@ -35,7 +35,7 @@ export class RootContainer extends Component {
             <Switch>
               <Route exact path="/:lang" component={Home} />
 
-              <Route exact path="/:lang/chat/:id" component={Chat} />
+              <Route path="/:lang/chat" component={Chat} />
 
               <Route component={NotFound} />
             </Switch>
@@ -51,4 +51,4 @@ export const mapDispatchToProps = (dispatch) => bindActionCreators({
 }, dispatch);
 
 
-export default withRouter(connect(null, mapDispatchToProps)(RootContainer));
+export default connect(null, mapDispatchToProps)(withRouter(RootContainer));

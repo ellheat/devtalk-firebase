@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import validate from 'validate.js/validate';
@@ -8,7 +8,7 @@ import messages from './messageForm.messages';
 import { Input, SendButton, Form } from './messageForm.styles';
 
 
-class MessageFormComponent extends PureComponent {
+class MessageFormComponent extends Component {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
     error: PropTypes.bool,

@@ -1,3 +1,3 @@
-import Contact from './chat.container';
+import Chat from './chat.container';
 
-export default Contact;
+export default Chat;

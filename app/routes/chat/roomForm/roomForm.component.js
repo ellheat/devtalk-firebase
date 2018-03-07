@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { Field, reduxForm } from 'redux-form/immutable';
 import PropTypes from 'prop-types';
@@ -11,7 +11,7 @@ import {
   Button,
 } from './roomForm.styles';
 
-export class RoomFormComponent extends PureComponent {
+export class RoomFormComponent extends Component {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
     error: PropTypes.bool,
