@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+import { Link } from 'react-router-dom';
 
 
 export class Home extends Component {
@@ -30,6 +31,9 @@ export class Home extends Component {
         Witaj {userProfile.get('displayName')} <br />
         email: {userProfile.get('email')}<br />
         avatar: <img src={userProfile.get('photoURL')} alt={userProfile.get('displayName')} /><br />
+        <br />
+        <br />
+        <Link to="/en/chat">Chat</Link>
         <br />
         <br />
         <br />
