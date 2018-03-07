@@ -18,4 +18,4 @@ export const mapDispatchToProps = (dispatch) => bindActionCreators({
   removeRoomsListener: RoomsActions.removeRoomsListener,
 }, dispatch);
 
-export default hot(module)(connect(mapStateToProps, mapDispatchToProps)(withRouter(Chat)));
+export default hot(module)(withRouter(connect(mapStateToProps, mapDispatchToProps)(Chat)));

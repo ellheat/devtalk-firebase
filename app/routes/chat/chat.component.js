@@ -29,7 +29,9 @@ export class Chat extends Component {
         addRoom={this.props.addRoom}
         rooms={this.props.rooms}
       />
-      <Route path="/:lang/chat/:id" component={Room} />
+      <Switch>
+        <Route exact path="/:lang/chat/:id" component={Room} />
+      </Switch>
     </Wrapper>
   );
 }
