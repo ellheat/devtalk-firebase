@@ -19,8 +19,8 @@ export class Message extends PureComponent {
   };
 
   renderDate = (timestamp) => {
-    const date = new Date(timestamp * 1000);
-    return `${moment(date).format('HH:mm:ss')}`;
+    const date = new Date(timestamp);
+    return `${moment(date).format('HH:mm:ss, DD:MM:YYYY')}`;
   };
 
   render = () => {
