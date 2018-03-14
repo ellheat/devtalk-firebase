@@ -60,6 +60,11 @@ export class Home extends PureComponent {
     this.setState({ userMenuOpened: !this.state.userMenuOpened });
   }
 
+  logout = () => {
+    this.props.logout();
+    this.setState({ userMenuOpened: false });
+  };
+
   renderLoggedOut = () => (
     <LoginView>
       <UserActionButton onClick={this.props.signIn}>Log in with Google</UserActionButton>
@@ -86,7 +91,7 @@ export class Home extends PureComponent {
           />
           <UserMenu menuOpened={this.state.userMenuOpened}>
             <MenuItem>{userProfile.get('email')}</MenuItem>
-            <LogoutButton menuOpened={this.state.userMenuOpened} onClick={this.props.logout}>Log out</LogoutButton>
+            <LogoutButton menuOpened={this.state.userMenuOpened} onClick={this.logout}>Log out</LogoutButton>
           </UserMenu>
         </UserData>
       </UserPanel>

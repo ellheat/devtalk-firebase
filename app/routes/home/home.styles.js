@@ -34,7 +34,7 @@ export const UserActionButton = styled.button`
   border: none;
   color: white;
   cursor: pointer;
-  
+  outline: none;
 `;
 
 export const LoginView = styled.div`
@@ -100,7 +100,7 @@ export const RoomButton = styled.button`
   border-bottom: 1px solid #2E2E4F;
   color: #DBD9FA;
   cursor: pointer;
-  
+  outline: none;
   font-size: 13px;
   padding: 15px;
   text-align: left;
