@@ -39,7 +39,6 @@ module.exports = require('./webpack.base.babel')({
       path.join(process.cwd(), 'app/main.js'),
     ],
     support: path.join(process.cwd(), 'app/support.js'),
-    'firebase-messaging-sw': path.join(process.cwd(), 'app/firebase-messaging-sw.js'),
   },
 
   // Don't use hashes in dev mode for better performance

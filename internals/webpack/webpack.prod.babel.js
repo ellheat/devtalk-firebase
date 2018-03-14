@@ -10,7 +10,6 @@ module.exports = require('./webpack.base.babel')({
   entry: {
     support: path.join(process.cwd(), 'app/support.js'),
     main: path.join(process.cwd(), 'app/main.js'),
-    'firebase-messaging-sw': path.join(process.cwd(), 'app/firebase-messaging-sw.js'),
   },
 
   // Utilize long-term caching by adding content hashes (not compilation hashes) to compiled assets
