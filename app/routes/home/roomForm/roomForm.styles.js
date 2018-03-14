@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Input = styled.input`
-  font-family: 'Arial';
+  
   font-size: 13px;
   background-color: transparent;
   border: none;
@@ -16,5 +16,6 @@ export const Input = styled.input`
 `;
 
 export const Form = styled.form`
-  margin-top: 10px;
+  margin-top: auto;
+  
 `;

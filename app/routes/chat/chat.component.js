@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { List } from 'immutable';
 
-import { Wrapper } from './chat.styles';
+import { Wrapper, RoomTitle } from './chat.styles';
 import { Messages } from './messages/messages.component';
 import { MessageForm } from './messageForm/messageForm.component';
 
@@ -19,20 +19,31 @@ export class Chat extends PureComponent {
   };
 
   componentDidMount() {
-    this.props.requestNotificationsPermission();
-    this.props.createChatListener(
-      this.props.match.params.id,
-    );
+    this.startRoomListening(this.props.match.params.id);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.match.params.id !== nextProps.match.params.id) {
+      this.startRoomListening(nextProps.match.params.id);
+    }
   }
 
   componentWillUnmount() {
     this.props.removeChatListener();
   }
 
+  startRoomListening(roomId) {
+    this.props.removeChatListener();
+    this.props.requestNotificationsPermission();
+    this.props.createChatListener(
+      roomId,
+    );
+  }
+
   submitHandler = (data) => {
     const author = {
-      name: this.props.userProfile.get('displayName'),
-      imageURL: this.props.userProfile.get('photoURL'),
+      name: this.props.userProfile.get('displayName', ''),
+      imageURL: this.props.userProfile.get('photoURL', ''),
     };
 
     this.props.sendChatMessage(
@@ -43,6 +54,7 @@ export class Chat extends PureComponent {
 
   render = () => (
     <Wrapper>
+      <RoomTitle>{this.props.match.params.id}</RoomTitle>
       <Messages messages={this.props.messages} />
       <MessageForm onSubmit={this.submitHandler} />
     </Wrapper>

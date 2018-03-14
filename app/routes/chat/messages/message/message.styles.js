@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   display: flex;
   transition: background-color 0.3s ease;
-  font-family: 'Arial';
-  margin: 20px;
+  flex: 0 0 auto;
+  margin: 22px;
   
   &:hover {
     background-color: #fff;
@@ -34,6 +34,7 @@ export const Content = styled.div`
 export const Avatar = styled.div`
   width: 40px;
   height: 40px;
+  flex: 0 0 40px;
   margin-right: 25px;
   border-radius: 50%;
   overflow: hidden;

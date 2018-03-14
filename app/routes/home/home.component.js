@@ -1,8 +1,10 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+import { Switch, Route } from 'react-router-dom';
 
 import { RoomForm } from './roomForm/roomForm.component';
+import Chat from '../chat/chat.container';
 
 import {
   AvatarImage,
@@ -18,6 +20,8 @@ import {
   RoomButton,
   LoginView,
   HomeComponent,
+  ChatContainer,
+  ScreenContainer,
 } from './home.styles';
 
 
@@ -89,14 +93,24 @@ export class Home extends PureComponent {
     );
   };
 
+  renderEmptyState = () => (
+    <div>asfs</div>
+  );
+
   renderLoggedIn = () => (
-    <div>
+    <ScreenContainer>
       { this.renderAppbar() }
-      <Sidebar>
-        {this.renderRooms()}
-        <RoomForm onSubmit={this.props.addRoom} />
-      </Sidebar>
-    </div>
+      <ChatContainer>
+        <Sidebar>
+          {this.renderRooms()}
+          <RoomForm onSubmit={this.props.addRoom} />
+        </Sidebar>
+        <Switch>
+          <Route exact path="/en/chat/:id" component={Chat} />
+          <Route render={this.renderEmptyState()} />
+        </Switch>
+      </ChatContainer>
+    </ScreenContainer>
   );
 
   render() {

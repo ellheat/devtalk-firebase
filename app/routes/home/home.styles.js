@@ -11,7 +11,7 @@ export const Link = styled(RRD.Link)`
 
 export const UserPanel = styled.div`
   background-color: #2E2E4F;
-  font-family: 'Arial';
+  
   padding: 1% 5%;
 `;
 
@@ -34,7 +34,7 @@ export const UserActionButton = styled.button`
   border: none;
   color: white;
   cursor: pointer;
-  font-family: 'Arial';
+  
 `;
 
 export const LoginView = styled.div`
@@ -91,8 +91,7 @@ export const MenuItem = styled.div`
 export const Sidebar = styled.div`
   background-color: #2E2E4F;
   color: black;
-  max-width: 200px;
-  height: 100%;
+  flex: 0 0 200px;
 `;
 
 export const RoomButton = styled.button`
@@ -101,7 +100,7 @@ export const RoomButton = styled.button`
   border-bottom: 1px solid #2E2E4F;
   color: #DBD9FA;
   cursor: pointer;
-  font-family: 'Arial';
+  
   font-size: 13px;
   padding: 15px;
   text-align: left;
@@ -111,4 +110,19 @@ export const RoomButton = styled.button`
   &:hover {
     background-color: #2E2E4F;
   }
+`;
+
+export const ChatContainer = styled.div`
+  display: flex;
+  align-items: stretch;
+  flex: 1 1 auto;
+`;
+
+export const ScreenContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: 100vh;
+  width: 100%;
+
 `;

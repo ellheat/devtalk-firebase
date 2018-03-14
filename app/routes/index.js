@@ -33,9 +33,7 @@ export class RootContainer extends Component {
         <Route path="/:lang">
           <App>
             <Switch>
-              <Route exact path="/:lang" component={Home} />
-
-              <Route exact path="/:lang/chat/:id" component={Chat} />
+              <Route path="/:lang" component={Home} />
 
               <Route component={NotFound} />
             </Switch>

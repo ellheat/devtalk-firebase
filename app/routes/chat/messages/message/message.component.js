@@ -28,7 +28,7 @@ export class Message extends PureComponent {
     return (
       <Wrapper>
         <Avatar>
-          <img src={author.get('imageURL')} alt={author} />
+          <img src={author.get('imageURL')} alt={author.get('name')} />
         </Avatar>
         <Content>
           <Meta>
