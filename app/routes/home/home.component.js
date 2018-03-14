@@ -22,6 +22,10 @@ import {
   HomeComponent,
   ChatContainer,
   ScreenContainer,
+  Logo,
+  Info,
+  UserPanelLogo,
+  UserInfo,
 } from './home.styles';
 
 
@@ -67,6 +71,7 @@ export class Home extends PureComponent {
 
   renderLoggedOut = () => (
     <LoginView>
+      <Logo>chaturbator</Logo>
       <UserActionButton onClick={this.props.signIn}>Log in with Google</UserActionButton>
     </LoginView>
   );
@@ -83,12 +88,15 @@ export class Home extends PureComponent {
     return (
       <UserPanel>
         <UserData>
-          <UserName>{userProfile.get('displayName')}</UserName>
-          <AvatarImage
-            onClick={() => this.toggleUserMenu()}
-            src={userProfile.get('photoURL')}
-            alt={userProfile.get('displayName')}
-          />
+          <Link to={'/'}><UserPanelLogo>chaturbator</UserPanelLogo></Link>
+          <UserInfo>
+            <UserName>{userProfile.get('displayName')}</UserName>
+            <AvatarImage
+              onClick={() => this.toggleUserMenu()}
+              src={userProfile.get('photoURL')}
+              alt={userProfile.get('displayName')}
+            />
+          </UserInfo>
           <UserMenu menuOpened={this.state.userMenuOpened}>
             <MenuItem>{userProfile.get('email')}</MenuItem>
             <LogoutButton menuOpened={this.state.userMenuOpened} onClick={this.logout}>Log out</LogoutButton>
@@ -99,7 +107,7 @@ export class Home extends PureComponent {
   };
 
   renderEmptyState = () => (
-    <div>Select a room</div>
+    <Info>Choose one of those awesome rooms!</Info>
   );
 
   renderLoggedIn = () => (

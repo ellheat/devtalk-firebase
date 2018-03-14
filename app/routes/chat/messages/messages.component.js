@@ -9,6 +9,17 @@ export class Messages extends PureComponent {
     messages: PropTypes.instanceOf(List).isRequired,
   };
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.messages.size !== this.props.messages.size) {
+      this.scrollToEnd();
+    }
+  }
+
+  scrollToEnd = () => {
+    const fullHeight = Array.from(this.wrapper.children).reduce((sum, elem) => sum + elem.clientHeight, 0);
+    this.wrapper.scrollTop = fullHeight + this.wrapper.clientHeight;
+  };
+
   renderMessage = (message) => (
     <Message
       key={message.get('key')}
@@ -17,8 +28,9 @@ export class Messages extends PureComponent {
       timestamp={message.get('timestamp')}
     />
   );
+
   render = () => (
-    <Wrapper>
+    <Wrapper innerRef={(comp) => (this.wrapper = comp)}>
       {this.props.messages.map(this.renderMessage).toArray()}
     </Wrapper>
   );

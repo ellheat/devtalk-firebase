@@ -6,15 +6,16 @@ export const Form = styled.form`
   display: flex;
   width: 100%;
   height: 40px;
-  border-top: 1px solid #2E2E4F;
+  box-shadow: 0px 0px 16px 0px #ccc;
   justify-content: flex-end;
 `;
 
 export const Input = styled.input`
-  width: 90%;
+  border: 0;
+  font-size: 12px;
   outline: none;
   padding: 0 7px;
-  border: 0;
+  width: 90%;
 `;
 
 export const SendButton = styled.button`

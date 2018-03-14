@@ -7,11 +7,12 @@ export const HomeComponent = styled.div`
 
 export const Link = styled(RRD.Link)`
   display: block;
+  text-decoration: none;
 `;
 
 export const UserPanel = styled.div`
   background-color: #2E2E4F;
-  padding: 1% 5%;
+  padding: 1% 5% 1% 1%;
 `;
 
 export const AvatarImage = styled.img`
@@ -22,35 +23,62 @@ export const AvatarImage = styled.img`
   width: 50px;
 `;
 
-
 export const UserName = styled.h1`
+  align-self: center;
   color: white;
   font-size: 12px;
   padding-right: 20px;
 `;
 
+export const UserInfo = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
 export const UserActionButton = styled.button`
-  background-color: transparent;
+  background-color: white;
   border: none;
-  color: white;
+  color: #2E2E4F;
   cursor: pointer;
+  font-weight: 600;
+  line-height: 40px;
+  height: 40px;
+  border-radius: 4px;
   outline: none;
+  margin-bottom: 20%;
+     
+  &:hover {
+    background-color: #ded3de;
+  }
 `;
 
 export const LoginView = styled.div`
+  align-items: center;
   background-color: #2E2E4F;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   height: 100%;
   width: 100%;
 `;
 
-export const LoginWindow = styled.div`
-  background-color: white;
-  display: flex;
-  justify-content: center;
-  height: 200px;
-  width: 500px;
+export const Logo = styled.div`
+  color: #1f1f3a;
+  font-size: 70px;
+  font-weight: 900;
+  font-family: 'Arial';
+  margin-bottom: 10%;
+`;
+
+export const UserPanelLogo = styled.div`
+  color: #1f1f3a;
+  font-size: 30px;
+  font-weight: 900;
+  font-family: 'Arial';
+  
+  &:hover {
+    color: #3F3F5F;
+  }
 `;
 
 export const LogoutButton = styled.button`
@@ -70,7 +98,7 @@ export const UserData = styled.div`
   align-items: center;
   display: flex;
   font-size: 12px;
-  justify-content: flex-end;
+  justify-content: space-between;
 `;
 
 export const UserMenu = styled.div`
@@ -125,5 +153,11 @@ export const ScreenContainer = styled.div`
   align-items: stretch;
   height: 100vh;
   width: 100%;
+`;
 
+export const Info = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 `;
