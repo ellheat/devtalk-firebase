@@ -68,37 +68,42 @@ export class Home extends PureComponent {
     </Link>
   ));
 
-  renderLoggedIn = () => {
+  renderAppbar = () => {
     const { userProfile } = this.props;
 
     return (
-      <UserData>
-        <UserName>{userProfile.get('displayName')}</UserName>
-        <AvatarImage
-          onClick={() => this.toggleUserMenu()}
-          src={userProfile.get('photoURL')} alt={userProfile.get('displayName')} />
-        <UserMenu menuOpened={this.state.userMenuOpened}>
-          <MenuItem>{userProfile.get('email')}</MenuItem>
-          <LogoutButton menuOpened={this.state.userMenuOpened}
-            onClick={this.props.logout}>Log out</LogoutButton>
-        </UserMenu>
-      </UserData>
+      <UserPanel>
+        <UserData>
+          <UserName>{userProfile.get('displayName')}</UserName>
+          <AvatarImage
+            onClick={() => this.toggleUserMenu()}
+            src={userProfile.get('photoURL')}
+            alt={userProfile.get('displayName')}
+          />
+          <UserMenu menuOpened={this.state.userMenuOpened}>
+            <MenuItem>{userProfile.get('email')}</MenuItem>
+            <LogoutButton menuOpened={this.state.userMenuOpened} onClick={this.props.logout}>Log out</LogoutButton>
+          </UserMenu>
+        </UserData>
+      </UserPanel>
     );
   };
+
+  renderLoggedIn = () => (
+    <div>
+      { this.renderAppbar() }
+      <Sidebar>
+        {this.renderRooms()}
+        <RoomForm onSubmit={this.props.addRoom} />
+      </Sidebar>
+    </div>
+  );
 
   render() {
     return (
       <HomeComponent>
         <Helmet title="Homepage" />
-        {this.props.isUserLogged ?
-          <div>
-            <UserPanel> { this.renderLoggedIn() }</UserPanel>
-            <Sidebar>
-              {this.renderRooms()}
-              <RoomForm onSubmit={this.props.addRoom} />
-            </Sidebar>
-          </div>
-          : this.renderLoggedOut()}
+        {this.props.isUserLogged ? this.renderLoggedIn() : this.renderLoggedOut()}
       </HomeComponent>
     );
   }
