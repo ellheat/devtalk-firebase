@@ -16,6 +16,8 @@ import {
   MenuItem,
   Sidebar,
   RoomButton,
+  LoginView,
+  HomeComponent,
 } from './home.styles';
 
 
@@ -55,7 +57,9 @@ export class Home extends PureComponent {
   }
 
   renderLoggedOut = () => (
-    <UserActionButton onClick={this.props.signIn}>Log in</UserActionButton>
+    <LoginView>
+      <UserActionButton onClick={this.props.signIn}>Log in with Google</UserActionButton>
+    </LoginView>
   );
 
   renderRooms = () => this.props.rooms.map((data, index) => (
@@ -84,7 +88,7 @@ export class Home extends PureComponent {
 
   render() {
     return (
-      <div className="home">
+      <HomeComponent>
         <Helmet title="Homepage" />
         {this.props.isUserLogged ?
           <div>
@@ -95,7 +99,7 @@ export class Home extends PureComponent {
             </Sidebar>
           </div>
           : this.renderLoggedOut()}
-      </div>
+      </HomeComponent>
     );
   }
 }

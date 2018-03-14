@@ -24,6 +24,10 @@ injectGlobal`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    height: 100%;
   }
   
+  #app {
+    height: 100%;
+  }
 `;

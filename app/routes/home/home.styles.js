@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import * as RRD from 'react-router-dom';
 
+export const HomeComponent = styled.div`
+  height: 100%;
+`;
+
 export const Link = styled(RRD.Link)`
   display: block;
 `;
@@ -28,8 +32,25 @@ export const UserName = styled.h1`
 export const UserActionButton = styled.button`
   background-color: transparent;
   border: none;
-  color: black;
+  color: white;
   cursor: pointer;
+  font-family: 'Arial';
+`;
+
+export const LoginView = styled.div`
+  background-color: #2E2E4F;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+`;
+
+export const LoginWindow = styled.div`
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  height: 200px;
+  width: 500px;
 `;
 
 export const LogoutButton = styled.button`
