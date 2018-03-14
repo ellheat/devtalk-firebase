@@ -6,7 +6,8 @@ export const Form = styled.form`
   display: flex;
   width: 100%;
   height: 40px;
-  border-top: 1px solid ${primaryBackgroundColor};
+  border-top: 1px solid #2E2E4F;
+  justify-content: flex-end;
 `;
 
 export const Input = styled.input`
@@ -18,15 +19,16 @@ export const Input = styled.input`
 
 export const SendButton = styled.button`
   width: 120px;
-  background-color: ${primaryBackgroundColor};
+  background-color: #2E2E4F;
   display: flex;
   align-items: center;
   justify-content: center;
   color: ${primaryTextColor};
   cursor: pointer;
   transition: background-color 0.25s;
+  border: none;
   
   &:hover {
-    background-color: ${secondaryBackgroundColor};
+    background-color: #2E2E4F;
   }
 `;

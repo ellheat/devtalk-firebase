@@ -11,7 +11,6 @@ export const Link = styled(RRD.Link)`
 
 export const UserPanel = styled.div`
   background-color: #2E2E4F;
-  
   padding: 1% 5%;
 `;
 
@@ -22,6 +21,7 @@ export const AvatarImage = styled.img`
   position: relative;
   width: 50px;
 `;
+
 
 export const UserName = styled.h1`
   color: white;
@@ -92,6 +92,7 @@ export const Sidebar = styled.div`
   background-color: #2E2E4F;
   color: black;
   flex: 0 0 200px;
+  overflow: scroll;
 `;
 
 export const RoomButton = styled.button`
