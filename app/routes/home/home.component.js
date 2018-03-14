@@ -94,7 +94,7 @@ export class Home extends PureComponent {
   };
 
   renderEmptyState = () => (
-    <div>asfs</div>
+    <div>Select a room</div>
   );
 
   renderLoggedIn = () => (
@@ -107,7 +107,7 @@ export class Home extends PureComponent {
         </Sidebar>
         <Switch>
           <Route exact path="/en/chat/:id" component={Chat} />
-          <Route render={this.renderEmptyState()} />
+          <Route render={this.renderEmptyState} />
         </Switch>
       </ChatContainer>
     </ScreenContainer>
