@@ -28,7 +28,7 @@ export const UserName = styled.h1`
 export const UserActionButton = styled.button`
   background-color: transparent;
   border: none;
-  color: white;
+  color: black;
   cursor: pointer;
 `;
 

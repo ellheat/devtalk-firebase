@@ -87,11 +87,14 @@ export class Home extends PureComponent {
       <div className="home">
         <Helmet title="Homepage" />
         {this.props.isUserLogged ?
-          <UserPanel> { this.renderLoggedIn() }</UserPanel> : this.renderLoggedOut()}
-        <Sidebar>
-          {this.renderRooms()}
-          <RoomForm onSubmit={this.props.addRoom} />
-        </Sidebar>
+          <div>
+            <UserPanel> { this.renderLoggedIn() }</UserPanel>
+            <Sidebar>
+              {this.renderRooms()}
+              <RoomForm onSubmit={this.props.addRoom} />
+            </Sidebar>
+          </div>
+          : this.renderLoggedOut()}
       </div>
     );
   }
